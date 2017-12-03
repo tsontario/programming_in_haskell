@@ -41,3 +41,12 @@ myAndTwo x y = if x == True then y else False
 
 -- Define a function luhnDouble :: Int -> Int that doubles a digit and subtracts
 -- 9 if the result greater than 9.
+luhnDouble :: Int -> Int
+luhnDouble x | 2 * x > 9 = (2 * x) - 9
+             | otherwise = 2 * x
+
+-- Using luhnDouble and the integer remainder function mod, define a function
+-- luhn :: Int -> Int -> Int -> Int -> Bool that decides if a four-digit bank
+-- card number is valid
+luhn :: Int -> Int -> Int -> Int -> Bool
+luhn a b c d = (luhnDouble a + b + luhnDouble c + d) `mod` 10 == 0
